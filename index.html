@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>કલ્પેશ પ્રવીણ મહેતા | અનાજ ખરીદી</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f39c12;
+            --secondary: #e67e22;
+            --bg-dark: #0a0a0b;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Mukta', sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: white;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Blobs */
+        .blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            padding: 4px;
+        }
+
+        .profile h1 {
+            font-size: 22px;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* Grid Features */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .feature {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            padding: 12px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-3px);
+        }
+
+        /* Modern Image Slider */
+        .slider-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #ccc;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        /* CTA Buttons */
+        .call-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration:none;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3);
+            transition: 0.3s;
+        }
+
+        .call-btn:active {
+            transform: scale(0.97);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+            z-index: 100;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .map-box {
+            margin-top: 24px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            opacity: 0.7;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob" style="top: -100px; left: -100px;"></div>
+    <div class="blob" style="bottom: -100px; right: -100px; background: #ff6b00;"></div>
+
+    <div class="container">
+        <div class="card">
+            <div class="profile">
+                <div class="profile-img-wrapper">
+                    <img src="https://ui-avatars.com/api/?name=Kalpesh+Maheta&background=f39c12&color=fff" alt="Profile">
+                </div>
+                <h1>કલ્પેશ પ્રવીણ મહેતા</h1>
+                <div class="subtitle">અનાજ ખરીદી વ્યવસાય</div>
+            </div>
+
+            <div class="features">
+                <div class="feature">🌾 શ્રેષ્ઠ ભાવ</div>
+                <div class="feature">⚖️ ચોક્કસ વજન</div>
+                <div class="feature">💰 રોકડ ચુકવણી</div>
+                <div class="feature">🤝 પાકો વિશ્વાસ</div>
+            </div>
+
+            <div class="slider-container">
+                <img id="slide" src="photo/photo (1).jpeg" alt="Grains">
+            </div>
+
+            <p class="desc">
+                અમે ખેડૂતો પાસેથી ઘઉં, બાજરી અને તમામ પ્રકારના અનાજની સીધી ખરીદી કરીએ છીએ. પ્રામાણિકતા અને પારદર્શિતા એ જ અમારી ઓળખ છે.
+            </p>
+
+            <a href="tel:9825565053" class="call-btn">
+                <span>📞</span> અત્યારે જ કોલ કરો
+            </a>
+
+            <div class="map-box">
+                <iframe width="100%" height="150" frameborder="0" style="border:0; filter: grayscale(1) invert(1);" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3671.5!2d72.5!3d23.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v123456789" allowfullscreen></iframe>
+            </div>
+
+            <div class="footer">
+                © 2024 કલ્પેશ પ્રવીણ મહેતા <br> 
+                મો. 9825565053
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/919825565053" class="whatsapp-float">
+        <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+    </a>
+
+    <script>
+        const images = ["photo/photo (1).jpeg", "photo/photo (2).jpeg"];
+        let i = 0;
+        const slideImg = document.getElementById("slide");
+
+        setInterval(() => {
+            slideImg.style.opacity = 0;
+            setTimeout(() => {
+                i = (i + 1) % images.length;
+                slideImg.src = images[i];
+                slideImg.style.opacity = 1;
+            }, 500);
+        }, 4000);
+    </script>
+</body>
+</html>
